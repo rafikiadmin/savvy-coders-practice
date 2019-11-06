@@ -1,4 +1,15 @@
-const name = "manav misra";
+// Object Literal
+const me = {
+  name: "Manav",
+  age: 23,
+  isLying: true,
+  maxBench: 550,
+  weight: 150
+};
 
-// Template Literal
-console.log(`hello world! this is ${name}`);
+// We are using BRACKET NOTATION
+console.log(me["name"]);
+
+// DOT NOTATION
+console.log(me.age);
+
