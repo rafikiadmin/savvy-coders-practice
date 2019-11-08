@@ -1,36 +1,18 @@
-// Object Literals are COLLECTION DATA TYPES.
-const me = {
-  name: 'mark',
-  age: 3,
-  homework: {
-    hw1: "passed",
-    hw2: "failed",
-  },
-  // Method
-  checkDrinkingAge: function() {
-    // Functions should have an EXPLICIT RETURN
-    // Comparison operator - always return boolean
-    return this.age >= 21;
-  },
-  checkHomework1: function() {
-    // Getter
-    return this.homework.hw1;
-  }
-};
+// Add the numbers from 1 to 10
 
-// Chaining
-me.homework.hw2 = 'passed';
+/**
+ * Create a loop that starts at 1 and ends at 10.
+ * Keep track of the current count.
+ * Keep track of the 🏃🏾‍♂️ total.
+ */
 
-// console.log(me.checkDrinkingAge());
+let currentNum = 0;
+let currentTotal = 0;
 
-// COERCION
-let x = 32;
-let y = false;
+while(currentNum <= 10) {
+  currentTotal += currentNum;
 
-// // JS defaults to coercing numbers into Strings
-// console.log(x === y);
+  currentNum += 1; // currentNum = currentNum + 1;
+}
 
-// Cocatenation and coercion
-console.log(x + Number(y));
-
-
+console.log(currentTotal);
