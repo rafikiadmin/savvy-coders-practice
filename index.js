@@ -1,16 +1,36 @@
-/**
- * DOT NOTATION indicates that console is an OBJECT.
- * In fact, EVERYTHING IN JS IS AN OBJECT EXCEPT PRIMITIVES.
- *
- * Here, log is being INVOKED by the use of ().
- * That means that it's a FUNCTION/METHOD.
- */
-console.log('hello wold');
-
+// Object Literals are COLLECTION DATA TYPES.
 const me = {
-  name: "manav"
-}
+  name: 'mark',
+  age: 3,
+  homework: {
+    hw1: "passed",
+    hw2: "failed",
+  },
+  // Method
+  checkDrinkingAge: function() {
+    // Functions should have an EXPLICIT RETURN
+    // Comparison operator - always return boolean
+    return this.age >= 21;
+  },
+  checkHomework1: function() {
+    // Getter
+    return this.homework.hw1;
+  }
+};
 
-// Properties just describe the state of something.
-// Methods invoke actions.
-console.log(me.name);
+// Chaining
+me.homework.hw2 = 'passed';
+
+// console.log(me.checkDrinkingAge());
+
+// COERCION
+let x = 32;
+let y = false;
+
+// // JS defaults to coercing numbers into Strings
+// console.log(x === y);
+
+// Cocatenation and coercion
+console.log(x + Number(y));
+
+
