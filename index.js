@@ -7,9 +7,4 @@ const me = {
   weight: 150
 };
 
-// We are using BRACKET NOTATION
-console.log(me["name"]);
-
-// DOT NOTATION
-console.log(me.age);
-
+console.log(`My name is ${me.name}`);
