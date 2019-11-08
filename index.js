@@ -1,13 +1,16 @@
 // Add the numbers from 1 to 10
 
-let currentTotal = 0;
+// NAMED PARAMETERS allow FUNCTIONS to receive additional information to complete a task.
+function numberSummer(startingValue, endingValue) {
+  let currentTotal = 0;
 
+  // Initializer; Exit Condition; Iterator
+  for (let i = startingValue; i <= endingValue; i += 1) {
+    currentTotal += i; // currentTotal = currentTotal + i;
+  }
 
-// Initializer; Exit Condition; Iterator
-for(let i = 1; i <= 10; i += 1) {
-  console.log('i is', i);
-  currentTotal += i; // currentTotal = currentTotal + i;
-  console.log('currentTotal is', currentTotal);
+  return currentTotal;
 }
 
-console.log(currentTotal);
+// We INVOKE FUNCTIONS and can pass in ARGUMENTS that 'match up' to the NAMED PARAMETERS
+console.log(numberSummer(1, 10));
