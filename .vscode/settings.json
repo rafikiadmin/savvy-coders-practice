@@ -10,7 +10,7 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "workbench.enableExperiments": false,
-  "workbench.colorTheme": "Material",
+  "workbench.colorTheme": "Cobalt2",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.view.alwaysShowHeaderActions": true,
   "terminal.integrated.fontFamily": "'Inconsolata', monospace",
