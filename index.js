@@ -1,34 +1,15 @@
+const x = 3;
+const y = 5;
+const z = 10;
+
+// LOGICAL OPERATORS involve AND and OR CONDITIONS
+// && - AND - both left and right OPERANDS must be true
+console.log(x < y && x < z);
+
 /**
- * This is a FUNCTION FACTORY that returns another function.
- * This FUNCTION FACTORY uses the concept of a CLOSURE.
+ * || - OR - if left OPERAND is true,
+ * right is never evaluated.
  *
- * initSportsScorer is the OUTER FUNCTION.
- * It receives pts, but then immediately discards its reference to pts.
- * Pts remains reference by the INNER FUNCTION - this is example of CLOSURE.
- * A variable loses reference from the original function but
- * has become 'enclosed' with a reference to the INNER FUNCTION.
+ * || allows us to do SHORT CIRCUITING;
  */
-function initSportsScorer(pts) {
-  return function(score) {
-    return score + pts;
-  };
-}
-
-const threePointers = initSportsScorer(3);
-console.log(threePointers(99));
-/**
- * function (score) {
- *  return score + 3;
- * }
- */
-
-const touchdown = initSportsScorer(6);
-console.log(touchdown(14));
-/**
- * function (score) {
- *  return score + 7;
- * }
- */
-
-const xtraPt = initSportsScorer(1);
-console.log(xtraPt(13));
+console.log(x < y || x < z);
