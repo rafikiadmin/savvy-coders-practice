@@ -1,17 +1,23 @@
-// Add the numbers from 1 to 10
+const numberSummerMachine = {
+  startingNumber: 1,
+  endingNumber: 10,
+  sumDaNumbers: function() {
+    let total = 0;
 
-// NAMED PARAMETERS allow FUNCTIONS to receive additional information to complete a task.
-// We can set DEFAULT VALUES for our NAMED PARAMETERS
-function numberSummer(startingValue = 1, endingValue = 10) {
-  let currentTotal = 0;
+    for (let i = this.startingNumber; i <= this.endingNumber; i += 1) {
+      total += i;
+    }
 
-  // Initializer; Exit Condition; Iterator
-  for (let i = startingValue; i <= endingValue; i += 1) {
-    currentTotal += i; // currentTotal = currentTotal + i;
+    return total;
+  },
+
+  // Setter that allows updating of the 'local data.'
+  // Developer's Note: Here we have used ES6 method shorthand.
+  setStartingNumber(num) {
+    this.startingNumber = num;
   }
+};
 
-  return currentTotal;
-}
+numberSummerMachine.setStartingNumber(5);
 
-// We INVOKE FUNCTIONS and can pass in ARGUMENTS that 'match up' to the NAMED PARAMETERS
-console.log(numberSummer());
+console.log(numberSummerMachine.sumDaNumbers());
