@@ -3,9 +3,11 @@ const numberSummerMachine = {
   endingNumber: 10,
   sumDaNumbers: function() {
     let total = 0;
+    let i = this.startingNumber;
 
-    for (let i = this.startingNumber; i <= this.endingNumber; i += 1) {
+    while (i <= this.endingNumber) {
       total += i;
+      i += 1;
     }
 
     return total;
