@@ -1,25 +1,21 @@
-const numberSummerMachine = {
-  startingNumber: 1,
-  endingNumber: 10,
-  sumDaNumbers: function() {
-    let total = 0;
-    let i = this.startingNumber;
+// doMath is expecting to receive a function!
+function doMath(x, y, operation) {
+  console.trace();
+  // the function will receive x and y
+  return operation(x, y);
+}
 
-    while (i <= this.endingNumber) {
-      total += i;
-      i += 1;
-    }
+function subtract(x, y) {
+  console.trace();
 
-    return total;
-  },
+  return y - x;
+}
 
-  // Setter that allows updating of the 'local data.'
-  // Developer's Note: Here we have used ES6 method shorthand.
-  setStartingNumber(num) {
-    this.startingNumber = num;
-  }
-};
+// function add(x, y) {
+//   console.trace();
 
-numberSummerMachine.setStartingNumber(5);
+//   return y + x;
+// }
 
-console.log(numberSummerMachine.sumDaNumbers());
+console.log(doMath(10, 5, subtract));
+// console.log(doMath(10, 5, add));
