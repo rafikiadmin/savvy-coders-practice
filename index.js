@@ -1,15 +1,12 @@
-// Use your looping skills to write out 'All work and no play makes Jack a dull boy' a given number of times.
-// Your function writePsychoBook(num)
-// Preferably, your function DOES NOT use 'console.log()
-// Instead, it builds (concatenates) a long string and returns it.
-// Then we can log it ourselves in the global scope.
+// Recursion
+function writePsychoBook(n) {
+  console.trace();
 
-function writePsychoBook(num) {
-  let str = "";
-
-  for (let i = 1; i <= num; i += 1) {
-    str += "All work and no play makes Jack a dull boy! ";
+  if (n === 0) {
+    return "i am done";
   }
 
-  return str;
+  return `All work and no play makes Jack a dull boy ${writePsychoBook(n - 1)}`;
 }
+
+console.log(writePsychoBook(99));
