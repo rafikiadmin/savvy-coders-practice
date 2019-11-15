@@ -1,9 +1,9 @@
 function myPow(num, exp) {
-  let ret = num;
-
-  for (let i = 1; i < exp; i += 1) {
-    ret *= num;
+  if (exp === 0) {
+    return 1;
   }
 
-  return ret;
+  return (num *= myPow(num, exp - 1));
 }
+
+console.log(myPow(2, 3));
