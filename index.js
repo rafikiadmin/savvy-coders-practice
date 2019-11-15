@@ -1,12 +1,9 @@
-// Recursion
-function writePsychoBook(n) {
-  console.trace();
+function myPow(num, exp) {
+  let ret = num;
 
-  if (n === 0) {
-    return "i am done";
+  for (let i = 1; i < exp; i += 1) {
+    ret *= num;
   }
 
-  return `All work and no play makes Jack a dull boy ${writePsychoBook(n - 1)}`;
+  return ret;
 }
-
-console.log(writePsychoBook(99));
