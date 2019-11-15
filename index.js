@@ -1,15 +1,11 @@
-const x = 3;
-const y = 5;
-const z = 10;
+function initGreeting(name, greeting) {
+  return function(time) {
+    return `${name} ${greeting}. The time is: ${time}`;
+  };
+}
 
-// LOGICAL OPERATORS involve AND and OR CONDITIONS
-// && - AND - both left and right OPERANDS must be true
-console.log(x < y && x < z);
+const eveningGeorge = initGreeting("Geroge", "Evening");
 
-/**
- * || - OR - if left OPERAND is true,
- * right is never evaluated.
- *
- * || allows us to do SHORT CIRCUITING;
- */
-console.log(x < y || x < z);
+const time = new Date(Date.now());
+
+console.log(eveningGeorge(`${time.getHours()}:${time.getMinutes()}`));
