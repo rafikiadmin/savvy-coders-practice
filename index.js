@@ -1,14 +1,14 @@
 function initPerson(fname, lname, age) {
   return {
-    firstName: fname,
-    lastName: lname,
-    age: 23,
-    canDrink: function() {
+    fname,
+    lname,
+    age,
+    canDrink() {
       return age >= 21;
     }
   };
 }
 
 const me = initPerson("manav", "misra", 13);
-
+console.log(me);
 console.log(me.canDrink());
