@@ -1,25 +1,24 @@
-const someP3 = "global p3";
+// Function contructors by convention are capitalized.
+function Person(fname, lname, age) {
+  this.fname = fname;
+  this.lname = lname;
+  this.age = age;
 
-function initObj(p1, p2, p3) {
-  return {
-    p1,
-    p2,
-    someP3: p3,
+  this.getFullName = function() {
+    return `${this.fname} ${this.lname}`;
+  };
 
-    getP1: () => `p1 is: ${this.p1}`,
-    getP2: function() {
-      return `p2 is ${p2}`;
-    },
-    getP3Bad: () => `${initObj.someP3}`,
-    getP3Global: () => `global p3: ${someP3}`
+  this.canVote = function() {
+    if (this.age >= 18) {
+      return "I vote!";
+    }
+
+    return "No voting for me!";
   };
 }
 
-const myObj = initObj("hurt", "heal", "fiend");
+const older = new Person("joh", "smith", 77);
 
-console.log(myObj);
-
-console.log(myObj.getP1());
-console.log(myObj.getP2());
-console.log(myObj.getP3Bad());
-console.log(myObj.getP3Global());
+console.log("older says", older);
+console.log(older.getFullName());
+console.log("older.canVote says", older.canVote());
