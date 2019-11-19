@@ -1,21 +1,25 @@
-function initFizzBuzz(num1, num2) {
-  return function() {
-    for (let i = 1; i <= 100; i += 1) {
-      // 24 % (4 * 6)
-      // If i divided by num1 * num2 is 0, then then number is divisible by both.
-      if (i % (num1 * num2) === 0) {
-        console.log(`${i} - FizzBuzz`);
+const someP3 = "global p3";
 
-        // ! means not
-      } else if (!(i % num1)) {
-        console.log(`${i}  Fizz`);
+function initObj(p1, p2, p3) {
+  return {
+    p1,
+    p2,
+    someP3: p3,
 
-        // Else-if there is not any remainder (i % num2 === 0)
-      } else if (!(i % num2)) {
-        console.log(`${i} - Buzz`);
-      } else {
-        console.log(i);
-      }
-    }
+    getP1: () => `p1 is: ${this.p1}`,
+    getP2: function() {
+      return `p2 is ${p2}`;
+    },
+    getP3Bad: () => `${initObj.someP3}`,
+    getP3Global: () => `global p3: ${someP3}`
   };
 }
+
+const myObj = initObj("hurt", "heal", "fiend");
+
+console.log(myObj);
+
+console.log(myObj.getP1());
+console.log(myObj.getP2());
+console.log(myObj.getP3Bad());
+console.log(myObj.getP3Global());
