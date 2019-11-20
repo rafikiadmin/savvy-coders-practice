@@ -1,32 +1,47 @@
-// Function constructors by convention are capitalized.
-function Person(fname, lname, age) {
-  /**
-   * Although we should generally stick to including `this` inside function constructors,
-   * note that one example of matching 🔑 names with the NAMED PARAMETERS,
-   * is that as long as nothing changes,
-   * we can omit 'this' and we can use ARROW SYNTAX.
-   *
-   * Again, this could be a bit brittle if there are any minor changes and I would stick with using `this` and keyword function, en generalmente.
-   */
+function Person(fname, lname, age, occupation) {
+  // Properties for describing state.
   this.fname = fname;
   this.lname = lname;
   this.age = age;
+  this.occupation = occupation;
 
-  this.getFullName = () => {
-    return `${fname} ${lname}`;
+  // Methods or computed properties
+  this.getBio = function() {
+    return `Hi! My name is ${this.getFullName()}. I am ${
+      this.age
+    } years old. ${this.getDrink()}`;
   };
 
-  this.canVote = () => {
-    if (age >= 18) {
-      return "I vote!";
+  this.getDrink = function() {
+    if (this.age < 21) {
+      return "Give me a Shirley Temple!";
     }
 
-    return "No voting for me!";
+    return "🙆🏾‍♂️, I will have a 🍺";
+  };
+
+  this.getFullName = function() {
+    return `${this.fname} ${this.lname}`;
+  };
+
+  this.setLName = function(newLName) {
+    if (newLName) {
+      this.lname = newLName;
+
+      // Shortcircuiting
+      return "name changed!";
+    }
+    return "name not changed!";
   };
 }
 
-const older = new Person("joh", "smith", 77);
+const kid = new Person("Mark", "West", 10, "Kid");
+const grownup = new Person("DAve", "West", 33, "Mechanic");
 
-console.log("older says", older);
-console.log(older.getFullName());
-console.log("older.canVote says", older.canVote());
+console.log(kid.getBio());
+console.log(grownup.getBio());
+
+console.log(kid.setLName("frankd"));
+console.log(kid.getBio());
+
+console.log(grownup.getBio());
