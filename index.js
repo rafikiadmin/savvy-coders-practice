@@ -1,41 +1,52 @@
-function Food(breakfast, lunch, dinner) {
-  this.breakfast = breakfast;
-  this.lunch = lunch;
-  this.dinner = dinner;
+function Person(fname, lname, age, occupation) {
+  // Properties for describing state.
+  this.fname = fname;
+  this.lname = lname;
+  this.age = age;
+  this.occupation = occupation;
 }
 
-Food.prototype.breakfastDrink = function() {
-  if (this.breakfastDrink === "milk") {
-    return `I would like some ${this.breakfast}`;
-  }
-  return `I'm lactose intolerant.`;
+Person.prototype.getBio = function() {
+  return `Hi! My name is ${this.getFullName()}. I am ${
+    this.age
+  } years old. ${this.getDrink()}`;
 };
 
-Food.prototype.eatOut = function() {
-  if (this.lunch === "yes") {
-    return "I would love teat at restaurant";
-  }
-
-  return "I will just cook";
+Person.prototype.getBio = this.getDrink = this.getFullName = function() {
+  return `${this.fname} ${this.lname}`;
 };
 
-Food.prototype.setSnack = function(snack) {
-  if (snack && typeof snack === "string") {
-    this.snack = snack;
-  } else {
-    console.error("snack cannot be blank or a non-string");
+Person.prototype.setLName = function(newLName) {
+  if (newLName) {
+    this.lname = newLName;
+
+    // Shortcircuiting
+    return "name changed!";
   }
+  return "name not changed!";
 };
 
-const foodPlan = new Food("milk", "yes", "pasta");
-const aPlan = new Food("milk", "yes", "pasta");
+const kid = new Person("Mark", "West", 10, "Kid");
+const grownup = new Person("DAve", "West", 33, "Mechanic");
 
-const fPlan = new Food("milk", "yes", "pasta");
+const snotNoseKid = new Person("Maddie", "Parker", 11, "Brat");
 
-console.log(foodPlan, aPlan, fPlan);
+/**
+ * snotNoseKid will get its own copy of getBio method.
+ * Therefore, when it is invoked this instance of method will run,
+ * instead of the the method attached to prototype (parent);
+ */
+snotNoseKid.getBio = function() {
+  return "I will not give a bio! Mind ur own biz.";
+};
 
-console.log(Food.prototype);
+console.log(kid.getBio());
+console.log(grownup.getBio());
 
-// console.log("before set snack", foodPlan);
-// foodPlan.setSnack("chips");
-// console.log("after set snack", foodPlan);
+// console.log(kid.setLName("frankd"));
+console.log(kid.getBio());
+
+console.log(grownup.getBio());
+console.log(snotNoseKid.getBio());
+
+console.log(snotNoseKid);
