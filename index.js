@@ -1,47 +1,31 @@
-function Person(fname, lname, age, occupation) {
-  // Properties for describing state.
-  this.fname = fname;
-  this.lname = lname;
-  this.age = age;
-  this.occupation = occupation;
+function Food(breakfast, lunch, dinner) {
+  this.breakfast = breakfast;
+  this.lunch = lunch;
+  this.dinner = dinner;
 
-  // Methods or computed properties
-  this.getBio = function() {
-    return `Hi! My name is ${this.getFullName()}. I am ${
-      this.age
-    } years old. ${this.getDrink()}`;
+  this.breakfastDrink = function() {
+    if (this.breakfastDrink === "milk") {
+      return `I would like some ${breakfast}`;
+    }
+    return `I'm lactose intolerant.`;
   };
 
-  this.getDrink = function() {
-    if (this.age < 21) {
-      return "Give me a Shirley Temple!";
+  this.eatOut = function() {
+    if (this.lunch === "yes") {
+      return "I would love teat at restaurant";
     }
 
-    return "🙆🏾‍♂️, I will have a 🍺";
+    return "I will just cook";
   };
 
-  this.getFullName = function() {
-    return `${this.fname} ${this.lname}`;
-  };
-
-  this.setLName = function(newLName) {
-    if (newLName) {
-      this.lname = newLName;
-
-      // Shortcircuiting
-      return "name changed!";
+  this.setSnack = function(snack) {
+    // TODO: Check if snack is a non-empty string (use typeof)
+    if (!snack || typeof snack !== "string") {
+      this.snack = snack;
+    } else {
+      console.error("snack cannot be blank or a non-string");
     }
-    return "name not changed!";
   };
 }
 
-const kid = new Person("Mark", "West", 10, "Kid");
-const grownup = new Person("DAve", "West", 33, "Mechanic");
-
-console.log(kid.getBio());
-console.log(grownup.getBio());
-
-console.log(kid.setLName("frankd"));
-console.log(kid.getBio());
-
-console.log(grownup.getBio());
+const foodPlan = new Food("milk", "yes", "pasta");
