@@ -1,23 +1,46 @@
-const numbersAndStrings = [
-  12,
-  "ab",
-  3,
-  6,
-  "c",
-  90,
-  "web",
-  "dev",
-  1440,
-  "Rusty"
-];
-console.log(numbersAndStrings.length);
-
-// TODO: Create a loop that will iterate over and console.log each element in this array.
-for (let i = 0; i <= numbersAndStrings.length; i += 1) {
-  console.log(numbersAndStrings[i]);
+function Person(fname, lname, age, occupation) {
+  // Properties for describing state.
+  this.fname = fname;
+  this.lname = lname;
+  this.age = age;
+  this.occupation = occupation;
 }
 
-// Remove the last element in array
-const popped = numbersAndStrings.pop();
-console.log(numbersAndStrings);
-console.log(popped);
+Person.prototype.getBio = function() {
+  return `Hi! My name is ${this.getFullName()}. I am ${
+    this.age
+  } years old. ${this.getDrink()}`;
+};
+
+Person.prototype.getDrink = function() {
+  if (this.age < 21) {
+    return "Give me a Shirley Temple!";
+  }
+
+  return "🙆🏾‍♂️, I will have a 🍺";
+};
+
+Person.prototype.getFullName = function() {
+  return `${this.fname} ${this.lname}`;
+};
+
+Person.prototype.setLName = function(newLName) {
+  if (newLName) {
+    this.lname = newLName;
+
+    // Shortcircuiting
+    return "name changed!";
+  }
+  return "name not changed!";
+};
+
+const kid = new Person("Mark", "West", 10, "Kid");
+const grownup = new Person("DAve", "West", 33, "Mechanic");
+
+console.log(kid.getBio());
+console.log(grownup.getBio());
+
+console.log(kid.setLName("frankd"));
+console.log(kid.getBio());
+
+console.log(grownup.getBio());
