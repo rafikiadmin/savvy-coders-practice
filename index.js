@@ -4,49 +4,44 @@ function Person(fname, lname, age, occupation) {
   this.lname = lname;
   this.age = age;
   this.occupation = occupation;
+
+  // Methods or computed properties
+  this.getBio = function() {
+    return `Hi! My name is ${this.getFullName()}. I am ${
+      this.age
+    } years old. ${this.getDrink()}`;
+  };
+
+  this.getDrink = function() {
+    if (this.age < 21) {
+      return "Give me a Shirley Temple!";
+    }
+
+    return "🙆🏾‍♂️, I will have a 🍺";
+  };
+
+  this.getFullName = function() {
+    return `${this.fname} ${this.lname}`;
+  };
+
+  this.setLName = function(newLName) {
+    if (newLName) {
+      this.lname = newLName;
+
+      // Shortcircuiting
+      return "name changed!";
+    }
+    return "name not changed!";
+  };
 }
-
-Person.prototype.getBio = function() {
-  return `Hi! My name is ${this.getFullName()}. I am ${
-    this.age
-  } years old. ${this.getDrink()}`;
-};
-
-Person.prototype.getBio = this.getDrink = this.getFullName = function() {
-  return `${this.fname} ${this.lname}`;
-};
-
-Person.prototype.setLName = function(newLName) {
-  if (newLName) {
-    this.lname = newLName;
-
-    // Shortcircuiting
-    return "name changed!";
-  }
-  return "name not changed!";
-};
 
 const kid = new Person("Mark", "West", 10, "Kid");
 const grownup = new Person("DAve", "West", 33, "Mechanic");
 
-const snotNoseKid = new Person("Maddie", "Parker", 11, "Brat");
-
-/**
- * snotNoseKid will get its own copy of getBio method.
- * Therefore, when it is invoked this instance of method will run,
- * instead of the the method attached to prototype (parent);
- */
-snotNoseKid.getBio = function() {
-  return "I will not give a bio! Mind ur own biz.";
-};
-
 console.log(kid.getBio());
 console.log(grownup.getBio());
 
-// console.log(kid.setLName("frankd"));
+console.log(kid.setLName("frankd"));
 console.log(kid.getBio());
 
 console.log(grownup.getBio());
-console.log(snotNoseKid.getBio());
-
-console.log(snotNoseKid);
