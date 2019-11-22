@@ -25,22 +25,27 @@ Person.prototype.getFullName = function() {
 };
 
 Person.prototype.setLName = function(newLName) {
-  if (newLName) {
+  console.log("trying to set lname with", newLName);
+  if (newLName && typeof newLName === "string") {
     this.lname = newLName;
 
     // Shortcircuiting
     return "name changed!";
   }
-  return "name not changed!";
+  console.error("name not changed!");
 };
 
+// Create instances from the Function Constructor with new keyword
 const kid = new Person("Mark", "West", 10, "Kid");
-const grownup = new Person("DAve", "West", 33, "Mechanic");
 
-console.log(kid.getBio());
-console.log(grownup.getBio());
+/**
+ * kid gets its own implementation of the getBio method.
+ * Now, this getBio is an instance method - not a prototype method.
+ */
+kid.getBio = function() {
+  return "no bio for you!";
+};
 
-console.log(kid.setLName("frankd"));
-console.log(kid.getBio());
+kid.setLName("madi");
 
-console.log(grownup.getBio());
+console.log(kid);
