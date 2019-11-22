@@ -54,17 +54,11 @@ Person.prototype.setNewFavGame = function(game) {
   }
 };
 
-// Create instances from the Function Constructor with new keyword
-const kid = new Person("Mark", "West", 10, "Kid");
+function Employee(fname, lname, age, occupation, empid) {
+  Person.call(this, fname, lname, age, occupation);
+  this.id = empid;
+}
 
-kid.setFavGames(["Goose Game", "Doom", "Life", "Monopoy", "D&D"]);
-kid.getFavGames();
-kid.setNewFavGame({
-  name: "Chutes and Ladders",
-  rating: "E"
-});
-kid.getFavGames();
-kid.setNewFavGame({
-  name: "GTA",
-  rating: "MA"
-});
+const emp = new Employee("Mark", "West", 22, "Dev", "123");
+
+console.log(emp);
