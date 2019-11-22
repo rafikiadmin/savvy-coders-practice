@@ -24,6 +24,12 @@ Person.prototype.getFullName = function() {
   return `${this.fname} ${this.lname}`;
 };
 
+Person.prototype.getFavGames = function() {
+  for (let i = 0; i <= this.favGames.length - 1; i += 1) {
+    console.log(this.favGames[i]);
+  }
+};
+
 Person.prototype.setLName = function(newLName) {
   console.log("trying to set lname with", newLName);
   if (newLName && typeof newLName === "string") {
@@ -35,17 +41,30 @@ Person.prototype.setLName = function(newLName) {
   console.error("name not changed!");
 };
 
+Person.prototype.setFavGames = function(games) {
+  // A setter can add an entirely new property to any instance
+  this.favGames = games;
+};
+
+Person.prototype.setNewFavGame = function(game) {
+  if (game.rating === "E") {
+    this.favGames.push(game);
+  } else {
+    console.error("Unacceptagle");
+  }
+};
+
 // Create instances from the Function Constructor with new keyword
 const kid = new Person("Mark", "West", 10, "Kid");
 
-/**
- * kid gets its own implementation of the getBio method.
- * Now, this getBio is an instance method - not a prototype method.
- */
-kid.getBio = function() {
-  return "no bio for you!";
-};
-
-kid.setLName("madi");
-
-console.log(kid);
+kid.setFavGames(["Goose Game", "Doom", "Life", "Monopoy", "D&D"]);
+kid.getFavGames();
+kid.setNewFavGame({
+  name: "Chutes and Ladders",
+  rating: "E"
+});
+kid.getFavGames();
+kid.setNewFavGame({
+  name: "GTA",
+  rating: "MA"
+});
