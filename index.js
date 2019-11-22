@@ -32,14 +32,26 @@ class Person {
       console.error("bad name received");
     }
   }
+
+  // Don't worry about this!!!
+  static putOnPants() {
+    return "I put on my pants 1 leg a time!";
+  }
 }
 
-const kid = new Person("mark", "ew", 33, "dev");
-console.log(kid.bio);
+class Employee extends Person {
+  constructor(fname, lname, age, occupation, empid) {
+    super(fname, lname, age, occupation);
+    this.id = empid;
+  }
 
-// We invoke the setter with a syntax that is similar to changing property
-kid.changeName = "hello";
-console.log(kid.bio);
+  get bio() {
+    return "I love my job!";
+  }
+}
 
-kid.changeName = "";
-console.log(kid.bio);
+const emp = new Employee("Mark", "west", 33, "dev", "123");
+
+console.log(emp);
+
+console.log(Employee.putOnPants());
