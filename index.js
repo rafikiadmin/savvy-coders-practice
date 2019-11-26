@@ -33,25 +33,54 @@ class Person {
     }
   }
 
-  // Don't worry about this!!!
-  static putOnPants() {
-    return "I put on my pants 1 leg a time!";
-  }
+  // This causes a blown stack due to recursion.
+  // set lname(newLName) {
+  //   this.lname = newLName;
+  // }
 }
+
+// We are passing in arguments that the constructor 👆 will use to bind to an instance's properties.
+const p = new Person("joh", "smit", 33, "insurance agent");
 
 class Employee extends Person {
   constructor(fname, lname, age, occupation, empid) {
+    // Sends some of the arguments are up to the 'supevisor' and assign these to THIS instance.
     super(fname, lname, age, occupation);
     this.id = empid;
   }
 
   get bio() {
-    return "I love my job!";
+    return `I love my job. ${this.id}`;
+  }
+
+  get empid() {
+    return `My id is: ${this.id}`;
+  }
+
+  get assignments() {
+    let ret = `The current task list is as folows:`;
+
+    for (let i = 0; i < this.workload.length; i += 1) {
+      ret += `${this.workload[i]}`;
+    }
+
+    return ret;
+  }
+
+  set empid(id) {
+    this.id = id;
+  }
+
+  set assignments(assignments) {
+    this.workload = assignments;
   }
 }
 
 const emp = new Employee("Mark", "west", 33, "dev", "123");
 
-console.log(emp);
+emp.empid = 234;
 
-console.log(Employee.putOnPants());
+console.log(emp.bio);
+
+emp.assignments = ["REdord vidoes", "write curriculum", "grade HW"];
+console.log(emp.assignments);
