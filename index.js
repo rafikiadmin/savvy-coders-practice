@@ -5,15 +5,18 @@ const strings = ["hello", "world", "again"];
 // concat is ideal b/c it doesn't mutate the original data.
 const numbersAndStrings = numbers.concat(strings);
 
-const updatedNumbersAndStrings = [];
+function updateNumbersAndString(originalArr, stringUpdate, numberUpdate) {
+  const updatedNumbersAndStrings = [];
 
-for (let i = 0; i < numbersAndStrings.length; i += 1) {
-  // If the element is a string concatenate "Hello, I am a string" to the end of it.
-  if (typeof numbersAndStrings[i] === "string") {
-    updatedNumbersAndStrings.push((numbersAndStrings[i] += "ehllo"));
-  } else {
-    updatedNumbersAndStrings.push((numbersAndStrings[i] += 236));
+  for (let i = 0; i < originalArr.length; i += 1) {
+    if (typeof originalArr[i] === "string") {
+      updatedNumbersAndStrings.push((originalArr[i] += stringUpdate));
+    } else {
+      updatedNumbersAndStrings.push((originalArr[i] += numberUpdate));
+    }
   }
+
+  return updatedNumbersAndStrings;
 }
 
-console.log(updatedNumbersAndStrings);
+console.log(updateNumbersAndString(numbersAndStrings, "ehloo", 236));
