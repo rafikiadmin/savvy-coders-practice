@@ -8,13 +8,14 @@ const numbersAndStrings = numbers.concat(strings);
 function updateNumbersAndString(originalArr, stringUpdate, numberUpdate) {
   const updatedNumbersAndStrings = [];
 
-  for (let i = 0; i < originalArr.length; i += 1) {
-    if (typeof originalArr[i] === "string") {
-      updatedNumbersAndStrings.push((originalArr[i] += stringUpdate));
+  // forEach needs to know what it should do for each element - callback fxn.
+  originalArr.forEach(function(el) {
+    if (typeof el === "string") {
+      updatedNumbersAndStrings.push((el += stringUpdate));
     } else {
-      updatedNumbersAndStrings.push((originalArr[i] += numberUpdate));
+      updatedNumbersAndStrings.push((el += numberUpdate));
     }
-  }
+  });
 
   return updatedNumbersAndStrings;
 }
