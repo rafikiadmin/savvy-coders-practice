@@ -5,11 +5,16 @@ const strings = ["hello", "world", "again"];
 // concat is ideal b/c it doesn't mutate the original data.
 const numbersAndStrings = numbers.concat(strings);
 
+// Arrow syntax DOES NOT have a THIS reference.
+numbers.forEach(number => {
+  console.log(number);
+});
+
 function updateNumbersAndString(originalArr, stringUpdate, numberUpdate) {
   const updatedNumbersAndStrings = [];
 
   // forEach needs to know what it should do for each element - callback fxn.
-  originalArr.forEach(function(el) {
+  originalArr.forEach(el => {
     if (typeof el === "string") {
       updatedNumbersAndStrings.push((el += stringUpdate));
     } else {
