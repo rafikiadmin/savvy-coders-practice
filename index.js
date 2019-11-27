@@ -5,24 +5,20 @@ const strings = ["hello", "world", "again"];
 // concat is ideal b/c it doesn't mutate the original data.
 const numbersAndStrings = numbers.concat(strings);
 
-// Arrow syntax DOES NOT have a THIS reference.
-numbers.forEach(number => {
-  console.log(number);
-});
-
 function updateNumbersAndString(originalArr, stringUpdate, numberUpdate) {
-  const updatedNumbersAndStrings = [];
-
-  // forEach needs to know what it should do for each element - callback fxn.
-  originalArr.forEach(el => {
+  return originalArr.map(el => {
     if (typeof el === "string") {
-      updatedNumbersAndStrings.push((el += stringUpdate));
-    } else {
-      updatedNumbersAndStrings.push((el += numberUpdate));
+      /**
+       * A return in a map's callback fxn.
+       * 'pushes' the result onto the new Array that will be created from the map.
+       */
+      return (el += stringUpdate);
+    }
+
+    if (typeof el === "number") {
+      return (el += numberUpdate);
     }
   });
-
-  return updatedNumbersAndStrings;
 }
 
 console.log(updateNumbersAndString(numbersAndStrings, "ehloo", 236));
