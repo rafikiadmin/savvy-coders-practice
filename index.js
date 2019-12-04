@@ -228,21 +228,50 @@ const users = [
       catchPhrase: "Centralized empowering task-force",
       bs: "target end-to-end models"
     }
+  },
+  {
+    id: 10,
+    name: "Clementina DuBuque",
+    username: "Moriah.Stanton",
+    email: "Rey.Padberg@karina.biz",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232"
+      }
+    },
+    phone: "024-648-3804",
+    website: "ambrose.net",
+    company: {
+      name: "Hoeger LLC",
+      catchPhrase: "Centralized empowering task-force",
+      bs: "target end-to-end models"
+    }
   }
 ];
 
-// TODO: Create fxn. that will take in data and a companyName.
+// TODO: Map over users.
+// Grab each company name and build out a directory for each company.
+// The result will be an Array of 'company directories.'
+// const directories = users.map(user => {
+//   return {
+//     [`${user.company.name}`]: getUsersForCompany(users, user.company.name)
+//   };
+// });
+
+const directories = users.map(({ company }) => ({
+  [`${company.name}`]: getUsersForCompany(users, company.name)
+}));
+
 // Said fxn. should return {name, address, phone} ONLY for the users for that company.
 function getUsersForCompany(data, companyName) {
   return data.filter(d => d.company.name === companyName);
 }
 
-const hoegerUsers = getUsersForCompany(users, "Yost and Sons").map(
-  ({ name, address, phone }) => ({
-    name,
-    phone,
-    address
-  })
-);
-
-console.log(hoegerUsers);
+directories.forEach(directory => {
+  console.log(directory);
+});
