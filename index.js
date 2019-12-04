@@ -231,24 +231,16 @@ const users = [
   }
 ];
 
-/**
- * If the condition is true,
- * the user will be returned
- */
-const longNames = users.filter(user => user.website.endsWith(".net"));
-console.log(longNames);
+const shortenedData = users.map(user =>
+  /**
+   * We use parentheses to let JS know that we want to return an object.
+   * This prevents confusion with JS thinking that the {}s are for our function body.
+   */
+  ({
+    name: user.name,
+    address: user.address,
+    phone: user.phone
+  })
+);
 
-const name = "Manav";
-console.log(name.length);
-
-/**
- * TODO: Use map to create a new Array of Objects,
- * but this time, we only include username, email and website.
- *
- */
-// const shortenedData = users.map(
-//   user => `${user.name} ${user.email} ${user.website}`
-// );
-
-// const usersWithPrefixedName = users.map(user => `Mr. ${user.name}`);
-// console.log(usersWithPrefixedName);
+console.log(shortenedData);
