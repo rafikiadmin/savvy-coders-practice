@@ -231,16 +231,23 @@ const users = [
   }
 ];
 
-const shortenedData = users.map(user =>
-  /**
-   * We use parentheses to let JS know that we want to return an object.
-   * This prevents confusion with JS thinking that the {}s are for our function body.
-   */
-  ({
-    name: user.name,
-    address: user.address,
-    phone: user.phone
-  })
-);
+// const shortenedData = users.map(user =>
+//   /**
+//    * We use parentheses to let JS know that we want to return an object.
+//    * This prevents confusion with JS thinking that the {}s are for our function body.
+//    */
+//   ({
+//     name: user.name,
+//     address: user.address,
+//     phone: user.phone
+//   })
+// );
+
+// Object Destructuring
+const shortenedData = users.map(({ name, address, phone }) => ({
+  name,
+  address,
+  fone: phone
+}));
 
 console.log(shortenedData);
