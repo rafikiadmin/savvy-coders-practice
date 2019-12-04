@@ -231,9 +231,18 @@ const users = [
   }
 ];
 
+// TODO: Create fxn. that will take in data and a companyName.
+// Said fxn. should return {name, address, phone} ONLY for the users for that company.
 function getUsersForCompany(data, companyName) {
   return data.filter(d => d.company.name === companyName);
 }
 
-const hoegerUsers = getUsersForCompany(users, "Hoeger LLC");
+const hoegerUsers = getUsersForCompany(users, "Yost and Sons").map(
+  ({ name, address, phone }) => ({
+    name,
+    phone,
+    address
+  })
+);
+
 console.log(hoegerUsers);
