@@ -231,23 +231,17 @@ const users = [
   }
 ];
 
-// const shortenedData = users.map(user =>
-//   /**
-//    * We use parentheses to let JS know that we want to return an object.
-//    * This prevents confusion with JS thinking that the {}s are for our function body.
-//    */
-//   ({
-//     name: user.name,
-//     address: user.address,
-//     phone: user.phone
-//   })
-// );
-
-// Object Destructuring
-const shortenedData = users.map(({ name, address, phone }) => ({
+const userCompanyInfo = users.map(({ name, company }) => ({
   name,
-  address,
-  fone: phone
+  companyName: company.name
 }));
 
-console.log(shortenedData);
+console.log(userCompanyInfo);
+// [{
+//   name:
+//   company:
+// }]
+
+// function stripDataForSpecifiedFields(data, fields) {
+
+// }
