@@ -231,17 +231,12 @@ const users = [
   }
 ];
 
-const userCompanyInfo = users.map(({ name, company }) => ({
-  name,
-  companyName: company.name
-}));
+// TODO: Only bring back user company info IF the user works for a company that starts with an "A"
+const userCompanyInfoForLetterACompanies = users
+  .map(({ name, company }) => ({
+    name,
+    companyName: company.name
+  }))
+  .filter(user => user.companyName.startsWith("A"));
 
-console.log(userCompanyInfo);
-// [{
-//   name:
-//   company:
-// }]
-
-// function stripDataForSpecifiedFields(data, fields) {
-
-// }
+console.log(userCompanyInfoForLetterACompanies);
