@@ -231,33 +231,20 @@ const users = [
   }
 ];
 
-// Data is a named parameter that IN THIS CASE happens to reference 'users'
-function stripDataForSpecifiedFields(data, keys) {
-  /**
-   * TODO: Take in any array of objects and an Array of fields and
-   * 'strip the data down' to return just that information.
-   *
-   * 'd' in this case represents individual user
-   */
-  return data.map(d =>
-    // keys will map for every piece of data - so here that would be every user
-    keys.map(key => {
-      // TODO: 'Merge' these individual objects into 1 object...
-      return {
-        // By using []s, we specify to JS that we want to use the value of the variable field and not just "key".
+function mergeCompanies(data, acquiringCompany, acquiredCompany) {
+  return data.map(d => {
+    if (d.company.name === acquiredCompany) {
+      d.company.name = acquiringCompany;
+    }
 
-        // THIS IS BRACKET NOTATION - not keys;
-        // Here d[key] would be, for example, user.name or user["name"]
-        [key]: d[key]
-      };
-    })
-  );
+    return d;
+  });
 }
 
-const userNameAndPhones = stripDataForSpecifiedFields(users, [
-  "name",
-  "phone",
-  "address",
-  "company"
-]);
-console.log(userNameAndPhones);
+const updatedUsersCompany = mergeCompanies(
+  users,
+  "Yost and Sons",
+  "Hoeger LLC"
+);
+
+console.log(updatedUsersCompany);
